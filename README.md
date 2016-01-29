@@ -5,4 +5,4 @@
 
 * 示例
 
-![](./art/eg.png)
+![](./GirdTest/art/eg.png)
