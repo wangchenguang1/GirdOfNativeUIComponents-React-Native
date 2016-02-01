@@ -95,14 +95,11 @@
     static NSString *identifier1 = @"cell1";
     RCTCustomViewLeftListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier1];
     if (cell == nil) {
-//      cell = [[RCTCustomViewLeftListCell alloc]initWithWidth:100 title:title];
       
       cell = [[RCTCustomViewLeftListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier1];
-    
+      cell.title = title;
+      
     }
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.title = title;
-    
     return cell;
     
   } else {
@@ -111,10 +108,9 @@
     NSArray *data = [self.girdData objectAtIndex:indexPath.row];
     RCTCustomViewRightListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-      cell = [[RCTCustomViewRightListCell alloc] initWithData:data];
-//      cell = [[RCTCustomViewRightListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+      cell = [[RCTCustomViewRightListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+      cell.dataArray = data;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
    
     return cell;
 

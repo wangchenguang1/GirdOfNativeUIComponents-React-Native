@@ -10,8 +10,7 @@
 
 @interface RCTCustomViewRightListCell : UITableViewCell
 
-//- (void)layoutViews:(NSArray *)dataArray;
+@property (nonatomic, strong) NSArray *dataArray;
 
-- (id)initWithData:(NSArray *)data;
 
 @end

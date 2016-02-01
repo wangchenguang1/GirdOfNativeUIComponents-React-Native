@@ -50,6 +50,7 @@
 
 - (void)setTitle:(NSString *)title
 {
+  _title = title;
   UILabel *label = (UILabel *)[self viewWithTag:100];
   label.text = title;
 }
