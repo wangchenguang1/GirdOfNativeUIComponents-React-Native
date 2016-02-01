@@ -18,6 +18,14 @@
 
 @implementation RCTCustomViewRightListCell
 
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+  if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+    _lablesArr = @[].mutableCopy;
+  }
+  return self;
+}
+
 - (void)setDataArray:(NSArray *)dataArray
 {
   _dataArray = dataArray;
@@ -31,6 +39,7 @@
   for (NSInteger i = 0; i < count; i++) {
     UILabel *lable = nil;
     NSString *str = [self.dataArray objectAtIndex:i];
+    
     if (i >= self.lablesArr.count) {
       lable = [[UILabel alloc] init];
       lable.textAlignment = NSTextAlignmentCenter;
@@ -47,10 +56,10 @@
     lable.hidden = NO;
   }
   
-  for (NSInteger j = count; j < self.lablesArr.count; j++) {
-    UILabel *lable = self.lablesArr[j];
-    lable.hidden = YES;
-  }
+//  for (NSInteger j = count; j < self.lablesArr.count; j++) {
+//    UILabel *lable = self.lablesArr[j];
+//    lable.hidden = YES;
+//  }
   
 }
 
