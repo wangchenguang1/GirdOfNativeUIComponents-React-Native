@@ -10,33 +10,46 @@
 
 #define  CELL_WIDTH 100
 
+@interface RCTCustomViewRightListCell ()
+
+@property(strong, nonatomic)NSMutableArray *lablesArr;
+
+@end
+
 @implementation RCTCustomViewRightListCell
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-  self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-  if (self) {
-    self.backgroundColor = [UIColor yellowColor];
-    
-  }
-  return self;
-}
-
-
 
 - (void)setDataArray:(NSArray *)dataArray
 {
   _dataArray = dataArray;
-  NSInteger count = [dataArray count];
-  for (int i = 0; i < count; i++) {
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(i * 100, 0, 100, 30)];
-    label.text = [dataArray objectAtIndex:i];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.numberOfLines = 1;
-    label.font = [UIFont systemFontOfSize:13];
-    label.layer.borderWidth = 0.5;
-    label.layer.borderColor = [[UIColor grayColor] CGColor];
-    [self addSubview:label];
+  [self configureLBs];
+}
+
+- (void)configureLBs
+{
+  NSUInteger count = _dataArray.count;
+  
+  for (NSInteger i = 0; i < count; i++) {
+    UILabel *lable = nil;
+    NSString *str = [self.dataArray objectAtIndex:i];
+    if (i >= self.lablesArr.count) {
+      lable = [[UILabel alloc] init];
+      lable.textAlignment = NSTextAlignmentCenter;
+      lable.layer.borderWidth = 0.5;
+      lable.font = [UIFont systemFontOfSize:13];
+      lable.layer.borderColor = [[UIColor grayColor] CGColor];
+      [self.lablesArr addObject:lable];
+      [self.contentView addSubview:lable];
+    }else{
+      lable = self.lablesArr[i];
+    }
+    [lable setFrame:CGRectMake(i * 100, 0, 100, 30)];
+    lable.text = str;
+    lable.hidden = NO;
+  }
+  
+  for (NSInteger j = count; j < self.lablesArr.count; j++) {
+    UILabel *lable = self.lablesArr[j];
+    lable.hidden = YES;
   }
   
 }

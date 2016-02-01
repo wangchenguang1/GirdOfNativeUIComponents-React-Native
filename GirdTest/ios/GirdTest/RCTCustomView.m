@@ -65,6 +65,10 @@
   
   self.rightTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, 100 * [self.girdData count], height - 30)];
   self.rightTableView.separatorStyle =  UITableViewCellSeparatorStyleNone;
+  
+  Class class = NSClassFromString(@"RCTCustomViewRightListCell");
+  [self.rightTableView registerClass:class forCellReuseIdentifier:@"cell"];
+  
   self.rightTableView.delegate = self;
   self.rightTableView.dataSource = self;
   [scrollView addSubview:self.rightTableView];
@@ -97,20 +101,17 @@
     if (cell == nil) {
       
       cell = [[RCTCustomViewLeftListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier1];
-      cell.title = title;
+     
       
     }
+     cell.title = title;
     return cell;
     
   } else {
     
-    static NSString *identifier = @"cell";
     NSArray *data = [self.girdData objectAtIndex:indexPath.row];
-    RCTCustomViewRightListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-      cell = [[RCTCustomViewRightListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-      cell.dataArray = data;
-    }
+    RCTCustomViewRightListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell.dataArray = data;
    
     return cell;
 
