@@ -10,7 +10,10 @@
 
 @interface RCTCustomViewLeftListCell : UITableViewCell
 
-- (id)initWithWidth:(CGFloat)width  title:(NSString *)title;
+@property (nonatomic, strong) NSString *title;
+
+//- (id)initWithWidth:(CGFloat)width  title:(NSString *)title;
+
 
 
 @end

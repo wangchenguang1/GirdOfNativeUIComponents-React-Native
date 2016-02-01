@@ -85,6 +85,7 @@
   return [self.girdData count];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if ([tableView isEqual:self.leftTableView]) {
@@ -94,9 +95,14 @@
     static NSString *identifier1 = @"cell1";
     RCTCustomViewLeftListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier1];
     if (cell == nil) {
-      cell = [[RCTCustomViewLeftListCell alloc]initWithWidth:100 title:title];
+//      cell = [[RCTCustomViewLeftListCell alloc]initWithWidth:100 title:title];
+      
+      cell = [[RCTCustomViewLeftListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier1];
+    
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.title = title;
+    
     return cell;
     
   } else {
@@ -106,6 +112,7 @@
     RCTCustomViewRightListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
       cell = [[RCTCustomViewRightListCell alloc] initWithData:data];
+//      cell = [[RCTCustomViewRightListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
    
