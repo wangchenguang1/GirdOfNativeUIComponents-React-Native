@@ -56,10 +56,10 @@
     lable.hidden = NO;
   }
   
-//  for (NSInteger j = count; j < self.lablesArr.count; j++) {
-//    UILabel *lable = self.lablesArr[j];
-//    lable.hidden = YES;
-//  }
+  for (NSInteger j = count; j < self.lablesArr.count; j++) {
+    UILabel *lable = self.lablesArr[j];
+    lable.hidden = YES;
+  }
   
 }
 
